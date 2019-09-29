@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+
+        <!-- MENU RESTRICTIONS: 4=ADD, 3=REMOVE -->
+        <!-- Removing (3) doesn't work. Therefore restrictions are added to submenus. -->
+
+        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_root">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+            <field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_expense.menu_hr_expense_root">
+            <field name="groups_id" eval="[(4,ref('hr_expense.group_hr_expense_user'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_timesheet.timesheet_menu_root">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+            <field name="groups_id" eval="[(4,ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        </record>
+        <record model="ir.ui.menu" id="hr_timesheet.menu_hr_time_tracking">
+            <field name="groups_id" eval="[(4,ref('hr_timesheet.group_hr_timesheet_user'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_root">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+            <field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+        </record>
+        <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_my_leaves">
+            <field name="groups_id" eval="[(4,ref('hr_holidays.group_hr_holidays_user'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="mass_mailing.mass_mailing_menu_root">
+            <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
+        </record>
+
+      <record model="ir.ui.menu" id="date_range.menu_date_range">
+          <field name="parent_id" ref="base_professional.menu_company_admin"/>
+          <field name="sequence" eval="20"/>
+      </record>
+
+  </data>
+</odoo>

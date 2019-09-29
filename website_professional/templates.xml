@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="website.layout_footer_copyright" inherit_id="website.layout" name="Footer Copyright">
+          <xpath expr="//footer" position="inside">
+              <div class="container mt16 mb8">
+                  <div class="pull-right" t-ignore="true" t-if="not editable">
+                      Powered by <a class="label label-success" href="http://www.apps2grow.com" target="_blank">Apps2GROW</a>
+                      hosting <a class="label label-danger" href="http://www.odoo.com/page/website-builder" target="_blank">Odoo</a>,
+                      an awesome <a href="http://www.odoo.com/page/crm" target="_blank">Open Source CRM</a>.
+                  </div>
+                  <div class="pull-left text-muted">
+                      Copyright &amp;copy; <span t-field="res_company.name">Company name</span>
+                  </div>
+              </div>
+          </xpath>
+        </template>
+
+    </data>
+</odoo>

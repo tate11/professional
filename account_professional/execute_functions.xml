@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="ir.module.module" name="remove_tax_groups_from_base_groups" eval="([1])"/>
+    </data>
+</odoo>

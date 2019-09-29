@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mail.access_mail_message_subtype_user,mail.message.subtype.user,mail.model_mail_message_subtype,base.group_user,1,0,0,0
+access_bus_bus,bus.bus company_manager,bus.model_bus_bus,base_professional.group_company_manager,1,1,1,1

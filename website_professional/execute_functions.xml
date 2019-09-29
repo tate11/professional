@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="ir.module.module" name="website_professional_create_default_website" eval="([1])"/>
+    </data>
+</odoo>

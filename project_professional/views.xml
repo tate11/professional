@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <!-- project.project form -->
+
+        <record model="ir.ui.view" id="view_project_project_form">
+            <field name="name">project.project.form.professional</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group[@name='group_alias']" position="attributes">
+                        <attribute name="attrs">{'invisible': 1}</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <!--
+        <record model="ir.actions.act_window" id="project.open_view_project_all">
+            <field name="help"><p>Click to create a new project.</p></field>
+        </record>
+        AssertionError: Element odoo has extra content: data, line 3
+        -->
+
+    </data>
+</odoo>

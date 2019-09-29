@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+website_crm_partner_assign.mail_message_subtype_portal_access,mail.message.subtype.portal,mail.model_mail_message_subtype,base.group_portal,1,0,0,0

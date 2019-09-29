@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ir.actions.report 
+
+        <record model="ir.ui.view" id="view_ir_actions_report_tree">
+            <field name="name">ir.actions.report.tree</field>
+            <field name="model">ir.actions.report</field>
+            <field name="inherit_id" ref="base.act_report_xml_view_tree"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_ir_actions_report_form">
+            <field name="name">ir.actions.report.form</field>
+            <field name="model">ir.actions.report</field>
+            <field name="inherit_id" ref="base.act_report_xml_view"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <field name="print_report_name" position="after">
+                    <field name="company_id"/>
+                </field>
+            </field>
+        </record> -->
+
+        <!-- ir.filters -->
+
+        <record model="ir.ui.view" id="view_ir_filters_tree">
+            <field name="name">ir.filters.tree</field>
+            <field name="model">ir.filters</field>
+            <field name="inherit_id" ref="base.ir_filters_view_tree"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_ir_filters_form">
+            <field name="name">ir.filters.form</field>
+            <field name="model">ir.filters</field>
+            <field name="inherit_id" ref="base.ir_filters_view_form"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <field name="active" position="after">
+                    <field name="company_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- ir.sequence -->
+
+        <record model="ir.ui.view" id="view_ir_sequence_tree">
+            <field name="name">ir.sequence.tree</field>
+            <field name="model">ir.sequence</field>
+            <field name="inherit_id" ref="base.sequence_view_tree"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ir.ui.view -->
+
+        <record model="ir.ui.view" id="view_view_tree">
+            <field name="name">ir.ui.view.tree</field>
+            <field name="model">ir.ui.view</field>
+            <field name="inherit_id" ref="base.view_view_tree"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="key"/>
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_view_search">
+            <field name="name">ir.ui.view.search</field>
+            <field name="model">ir.ui.view</field>
+            <field name="inherit_id" ref="base.view_view_search"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <field name="model" position="after">
+                    <field name="key"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_view_form">
+            <field name="name">ir.ui.view.form</field>
+            <field name="model">ir.ui.view</field>
+            <field name="inherit_id" ref="base.view_view_form"/>
+            <field name="priority" eval="21"/>
+            <field name="arch" type="xml">
+                <field name="xml_id" position="after">
+                    <field name="company_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- res.company -->
+
+		<record model="ir.ui.view" id="view_res_company_form">
+            <field name="name">res.company.form</field>
+    		<field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+    		<field name="priority" eval="20"/>
+    		<field name="arch" type="xml">
+                <field name="currency_id" position="before">
+                    <field name="create_uid" invisible="1"/>
+                </field>
+                <field name="currency_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('create_uid', '>', 0)]}</attribute>
+                </field>
+    		</field>
+		</record>
+
+        <record id="base_technical_user.res_company_view_form_inherit_base_technical_user" model="ir.ui.view">
+            <field name="name">res.company.form (base_technical_user)</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[1]" position="after">
+                    <page name="configuration" string="Configuration">
+                        <group>
+                            <group name="tech_param" string="Technical Parameters">
+                                <field name="user_tech_id"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- res.users -->
+
+		<record model="ir.ui.view" id="view_res_users_tree">
+            <field name="name">res.users.tree</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+    		<field name="priority" eval="20"/>
+    		<field name="arch" type="xml">
+        		<tree position="inside">
+    				<field name="company_id"/>
+				</tree>
+    		</field>
+		</record>
+
+        <!-- MENU -->
+
+        <menuitem id="menu_company_admin" name="Admin" sequence="501" groups="base_professional.group_company_manager"/>
+        <menuitem id="menu_company_admin_admin" name="Admin" sequence="10" parent="menu_company_admin"/>
+
+        <record model="ir.ui.menu" id="base.menu_tests">
+            <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
+        </record>
+
+    </data>
+</odoo>

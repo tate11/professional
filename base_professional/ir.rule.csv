@@ -1,0 +1,2 @@
+id,name,model_id:id,groups:id,domain_force,perm_read,perm_write,perm_create,perm_unlink
+ir_ui_view_company_manager_rule,ir_ui_view company manager,base_professional.model_ir_ui_view,group_company_manager,"[('company_id','child_of',[user.company_id.id])]",1,1,1,1

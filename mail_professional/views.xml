@@ -1,0 +1,35 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="view_mail_template_form">
+        <field name="name">mail.template.form</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form"/>
+        <field name="priority" eval="21"/>
+        <field name="arch" type="xml">
+            <field name="model" position="after">
+                <field name="company_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_res_users_form">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="mail.view_users_form_mail"/>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <!--<field name="sel_groups_%(base.group_erp_manager)d_%(base.group_system)d" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+            </field>-->
+            <xpath expr="//field[@name='alias_id']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='alias_contact']" position="attributes">
+               <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+  </data>
+</odoo>

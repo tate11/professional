@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <function model="ir.module.module" name="stock_professional_deactivate_blocking_ir_rules" eval="([1])"/>
+        <function model="ir.module.module" name="stock_professional_deactivate_locations" eval="([1])"/>
+    </data>
+</odoo>

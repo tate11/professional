@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- website -->
+
+        <record model="ir.ui.view" id="view_website_form">
+            <field name="name">website.form</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="default_lang_id" position="after">
+                        <field name="user_id" groups="base.group_no_one" domain="[('active','=',0)]"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_website_tree">
+            <field name="name">website.form</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_tree"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                    <tree position="inside">
+                        <field name="domain"/>
+                    </tree>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_website">
+            <field name="name">Website</field>
+            <field name="res_model">website</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="website.action_website_menu">
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_website_qweb">
+            <field name="name">Website QWeb</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('key','like','website'),('type','=','qweb')]</field>
+        </record>
+
+        <menuitem id="menu_website" name="Website" sequence="20" parent="website.menu_website_global_configuration" action="action_website"/>
+        <menuitem id="menu_website_menu" name="Website Menu" sequence="21" parent="website.menu_website_global_configuration" action="website.action_website_menu"/>
+        <menuitem id="menu_qweb" name="Website QWeb" sequence="22" parent="website.menu_website_global_configuration" action="action_website_qweb"/>
+
+        <record model="ir.ui.menu" id="website.menu_website_website_settings">
+            <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="website.menu_dashboard">
+            <field name="sequence" eval="100"/> <!-- Access Error -->
+        </record>
+
+        <record model="ir.ui.menu" id="website.menu_website_global_configuration">
+            <field name="groups_id" eval="[(4,ref('website.group_website_designer'))]"/>
+        </record>
+
+    </data>
+</odoo>

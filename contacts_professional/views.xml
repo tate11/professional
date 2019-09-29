@@ -1,0 +1,14 @@
+<odoo>
+  <data>
+
+        <!-- MENU -->
+
+        <record model="ir.ui.menu" id="contacts.menu_contacts">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+            <field name="groups_id" eval="[(4,ref('base.group_no_one'))]"/>
+        </record>
+
+        <menuitem id="menu_account_partner_deduplicate" name="Deduplicate Contacts" sequence="100" groups="base_professional.group_company_manager" parent="contacts.res_partner_menu_config" action="base.action_partner_deduplicate"/>
+
+  </data>
+</odoo>

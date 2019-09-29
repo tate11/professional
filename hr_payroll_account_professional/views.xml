@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- hr.payslip.line -->
+        
+        <record model="ir.ui.view" id="view_hr_payslip_line_tree">
+            <field name="name">hr.payslip.line.tree.hr_professional</field>
+            <field name="model">hr.payslip.line</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_line_tree"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree position="attributes">
+                    <attribute name="create">0</attribute>
+                    <attribute name="edit">0</attribute>
+                    <attribute name="delete">0</attribute>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_hr_payslip_line_form">
+            <field name="name">hr.payslip.line.form.hr_professional</field>
+            <field name="model">hr.payslip.line</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_line_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form position="attributes">
+                    <attribute name="create">0</attribute>
+                    <attribute name="edit">0</attribute>
+                    <attribute name="delete">0</attribute>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_hr_payslip_line_pivot">
+            <field name="name">hr.payslip.line.pivot.hr_professional</field>
+            <field name="model">hr.payslip.line</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <pivot string="Payslip Lines">
+                    <field name="salary_rule_id" type="row"/>
+                    <field name="total" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        
+        <act_window id="action_hr_payslip_line_tree"
+                    name="Payslip Lines"
+                    res_model="hr.payslip.line"
+                    view_mode="tree,form,pivot"
+                    />
+
+        <menuitem id="menu_hr_payslip_line"
+                  name="Payslip Lines"
+                  sequence="11"
+                  parent="hr_payroll.menu_hr_payroll_root"
+                  action="action_hr_payslip_line_tree"/>
+        
+        <record model="ir.ui.menu" id="hr_payroll.menu_hr_payslip_run">
+            <field name="sequence" eval="12"/>
+        </record>
+
+        <!-- MENU -->
+
+        <record model="ir.ui.menu" id="hr_payroll.menu_hr_payroll_global_settings">
+            <field name="groups_id" eval="[(4,ref('base.group_system'))]"/>
+        </record>
+
+        <record model="ir.ui.menu" id="hr.menu_hr_root">
+            <field name="groups_id" eval="[(3,ref('base.group_user'))]"/>
+            <field name="groups_id" eval="[(4,ref('hr.group_hr_user'))]"/>
+        </record>
+        <record model="ir.ui.menu" id="hr.menu_open_view_employee_list_my">
+            <field name="groups_id" eval="[(4,ref('hr.group_hr_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

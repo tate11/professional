@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- account.account.type -->
+
+        <record model="ir.ui.view" id="view_account_type_tree">
+            <field name="name">account.account.type.tree.account_professional</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_tree"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="company_id"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_type_form">
+            <field name="name">account.account.type.form.account_professional</field>
+            <field name="model">account.account.type</field>
+            <field name="inherit_id" ref="account.view_account_type_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="company_id"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- account.move.line -->
+
+        <record model="ir.ui.view" id="view_account_move_line_search">
+            <field name="name">account.move.line.search.account_professional</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                    <search position="inside">
+                        <field name="analytic_account_id"/>
+                    </search>
+                </data>
+            </field>
+        </record>
+
+        <!-- res.company -->
+
+        <record model="ir.ui.view" id="view_res_company_form">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base_technical_user.res_company_view_form_inherit_base_technical_user"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <page name="configuration" position="inside">
+                    <group>
+                        <group name="account_param" string="Accounting Configuration">
+                            <field name="period_lock_date"/>
+                            <field name="fiscalyear_lock_date"/>
+                        </group>
+                    </group>
+                </page>
+            </field>
+        </record>
+
+        <!-- res.partner -->
+
+        <record model="ir.ui.view" id="view_res_partner_form">
+            <field name="name">res.partner.property.form.account_professional</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="property_account_receivable_id" position="attributes">
+                        <attribute name="required">False</attribute>
+                    </field>
+                    <field name="property_account_payable_id" position="attributes">
+                        <attribute name="required">False</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</odoo>
